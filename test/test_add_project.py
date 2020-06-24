@@ -3,8 +3,8 @@ import random
 
 
 def test_add_project(app):
-    name = 'test_name' + str(random.randrange(0, 50))
-    description = 'test_description' + str(random.randrange(0, 50))
+    name = 'test_name' + str(random.randrange(0, 60))
+    description = 'test_description' + str(random.randrange(0, 60))
     project = Project(name=name, description=description)
     old_project_list = app.project.get_project_list()
     app.project.add_new_project(project)

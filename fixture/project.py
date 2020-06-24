@@ -28,6 +28,17 @@ class ProjectHelper:
         wd.find_element_by_name('description').send_keys(project.description)
         wd.find_element_by_class_name('button').click()
 
+    def open_first_project(self):
+        wd = self.app.wd
+        self.project_management_page()
+        wd.find_element_by_xpath("//tr[3]/td/a").click()
+
+    def delete_first_project(self):
+        wd = self.app.wd
+        self.open_first_project()
+        wd.find_element_by_xpath("//input[3]").click()
+        wd.find_element_by_xpath("//input[4]").click()
+
     def get_project_list(self):
         wd = self.app.wd
         project_list = []
