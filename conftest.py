@@ -23,16 +23,10 @@ def app(request):
     browser = request.config.getoption("--browser")
     web_config = load_config(request.config.getoption("--target"))["web"]
     if fixture is None or not fixture.is_valid():
-        fixture = Application(browser=browser, base_url=web_config["baseUrl"])
+        fixture = Application(browser=browser, base_url=web_config['baseUrl'])
+    login_config = load_config(request.config.getoption("--target"))['webadmin']
+    fixture.session.ensure_login(username=login_config["username"], password=login_config["password"])
     return fixture
-
-
-@pytest.fixture(scope='session')
-def orm(request):
-    orm_config = load_config(request.config.getoption('--target'))['db']
-    ormfixtute = ORMFixture(host=orm_config['host'], name=orm_config['name'],
-                            user=orm_config['user'], password=orm_config['password'])
-    return ormfixtute
 
 
 @pytest.fixture(scope="session", autouse=True)
