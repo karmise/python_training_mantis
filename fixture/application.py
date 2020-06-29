@@ -3,6 +3,8 @@ from fixture.session import SessionHelper
 from webdriver_manager.chrome import ChromeDriverManager
 from fixture.project import ProjectHelper
 from fixture.james import JamesHelper
+from fixture.singup import SignupHelper
+from fixture.mail import MailHelper
 
 
 class Application:
@@ -16,6 +18,8 @@ class Application:
         self.session = SessionHelper(self)
         self.project = ProjectHelper(self)
         self.james = JamesHelper(self)
+        self.signup = SignupHelper(self)
+        self.mail = MailHelper(self)
         self.config = config
         self.base_url = config["web"]["baseUrl"]
 
