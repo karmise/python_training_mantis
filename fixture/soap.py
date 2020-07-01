@@ -10,7 +10,7 @@ class SoapHelper:
         self.base_url = self.app.config['web']['baseUrl'] + "/api/soap/mantisconnect.php?wsdl"
 
     def can_login(self, username, password):
-        client = Client("http://localhost/mantisbt-1.2.20/api/soap/mantisconnect.php?wsdl")
+        client = Client(self.base_url)
         try:
             client.service.mc_login(username, password)
             return True
